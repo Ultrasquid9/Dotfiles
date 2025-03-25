@@ -1,0 +1,62 @@
+# Breaks with right_format
+add_newline = false
+
+format = """\
+[╭╴](bold white)$os$username${custom.get-dir}$git_branch$git_status
+$character
+"""
+
+right_format = """\
+$time\
+$c\
+$dart\
+$golang\
+$gradle\
+$java\
+$kotlin\
+$lua\
+$python\
+$rust\
+"""
+
+[character]
+success_symbol = "╰⎯"
+error_symbol = "╰⎯"
+
+[os]
+format = '[$symbol](bold blue)'   
+disabled = false
+
+[os.symbols]
+Arch = '󰣇'
+
+[username]
+style_user = 'yellow bold'
+style_root = 'black bold'
+format = ' [$user](bold white) [🞄](dimmed white)'
+disabled = false
+show_always = true
+
+[git_branch]
+symbol = ""
+#style = "bg:#FCA17D"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+#style = "bg:#FCA17D"
+format = '[$all_status$ahead_behind ]($style)'
+
+[time]
+disabled = false
+use_12hr= true
+format = "[🞄 $time 🞄 ]($style)"
+time_format = "%R"
+utc_time_offset = "local"
+style = "dimmed white"
+
+[custom.get-dir]
+command = "pwd | str replace $\"/var/home/(whoami)\" \"~\""
+format = " [$output]($style) [🞄](dimmed white)"
+shell = "nu"
+style = "yellow"
+when = "true"

@@ -1,0 +1,7 @@
+[[language]]
+name = "rust"
+indent = { tab-width = 4, unit = "	" }
+
+[[language]]
+name = "nu"
+indent = { tab-width = 4, unit = "	" }
