@@ -45,6 +45,14 @@ $env.config = {
 	]
 }
 
+# Shortcut to commit all changed dotfiles
+def yadm-commit [] {
+	cd
+	let files = yadm ls-files . -m | parse '{file}'
+	for x in $files { yadm add $x.file }
+	yadm commit
+}
+
 # Allow Yazi to change the shell directory
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
@@ -60,7 +68,6 @@ def --env y [...args] {
 alias hyfetch = hyfetch -b fastfetch
 
 # Enabling zoxide
-zoxide init nushell | save -f ~/.zoxide.nu
 source ~/.zoxide.nu
 alias cd = z
 

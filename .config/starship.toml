@@ -20,8 +20,8 @@ $rust\
 """
 
 [character]
-success_symbol = "╰⎯"
-error_symbol = "╰⎯"
+success_symbol = "╰-"
+error_symbol = "╰-"
 
 [os]
 format = '[$symbol](bold blue)'   
