@@ -55,7 +55,7 @@ utc_time_offset = "local"
 style = "dimmed white"
 
 [custom.get-dir]
-command = "pwd | str replace $\"/var/home/(whoami)\" \"~\""
+command = "'~' + (pwd | split row (whoami)).1"
 format = " [$output]($style) [🞄](dimmed white)"
 shell = "nu"
 style = "yellow"
