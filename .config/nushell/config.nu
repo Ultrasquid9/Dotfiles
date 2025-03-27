@@ -5,7 +5,7 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 export-env {
 	# Helix as default editor
 	$env.EDITOR = "helix"
-	
+
 	# Used for FZF ctrl-t searching
 	$env.FZF_CTRL_T_COMMAND = "fd --type file --hidden"
 	$env.FZF_CTRL_T_OPTS = "--preview 'bat --color=always --style=full --line-range=:500 {}' "

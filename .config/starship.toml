@@ -2,7 +2,16 @@
 add_newline = false
 
 format = """\
-[╭╴](bold white)$os$username${custom.get-dir}$git_branch$git_status
+[╭╴](bold white)\
+$os \
+[◢](blue)\
+$username\
+[◢](fg:purple bg:blue)\
+${custom.get-dir}\
+[◢](fg:white bg:purple)\
+$git_branch\
+$git_status\
+[◤](fg:white)
 $character
 """
 
@@ -20,8 +29,8 @@ $rust\
 """
 
 [character]
-success_symbol = "╰-"
-error_symbol = "╰-"
+success_symbol = "╰─"
+error_symbol = "╰─"
 
 [os]
 format = '[$symbol](bold blue)'   
@@ -33,18 +42,18 @@ Arch = '󰣇'
 [username]
 style_user = 'yellow bold'
 style_root = 'black bold'
-format = ' [$user](bold white) [🞄](dimmed white)'
+format = '[ $user ](fg:#232634 bg:blue)'
 disabled = false
 show_always = true
 
 [git_branch]
 symbol = ""
-#style = "bg:#FCA17D"
 format = '[ $symbol $branch ]($style)'
+style = 'fg:#232634 bg:white'
 
 [git_status]
-#style = "bg:#FCA17D"
 format = '[$all_status$ahead_behind ]($style)'
+style = 'fg:#d30000 bg:white'
 
 [time]
 disabled = false
@@ -56,7 +65,7 @@ style = "dimmed white"
 
 [custom.get-dir]
 command = "'~' + (pwd | split row (whoami)).1"
-format = " [$output]($style) [🞄](dimmed white)"
+format = "[ $output ]($style)"
 shell = "nu"
-style = "yellow"
+style = "fg:#232634 bg:purple"
 when = "true"
