@@ -12,6 +12,9 @@ export-env {
 }
 
 $env.config = {
+	# Disabling the default welcome banner
+	show_banner: false
+
 	# Setting Helix as the default editor
 	buffer_editor: "helix"
 
@@ -39,7 +42,17 @@ $env.config = {
 			mode: emacs
 			event: {
 				send: executehostcommand,
-				cmd: "cd (ls | where type == dir | each { |it| $it.name} | str join (char nl) | fzf | decode utf-8 | str trim)"
+				cmd: "
+				cd (
+					ls
+					| where type == dir 
+					| each {|it| $it.name} 
+					| str join (char nl)
+					| fzf
+					| decode utf-8
+					| str trim
+				)
+				"
 			}
 		}
 	]
@@ -64,9 +77,6 @@ def --env y [...args] {
 	rm -fp $tmp
 }
 
-# Making hyfetch use fastfetch as its backend
-alias hyfetch = hyfetch -b fastfetch
-
 # Enabling zoxide
 source ~/.zoxide.nu
 alias cd = z
@@ -78,6 +88,4 @@ def clear [] {
 	hyfetch
 }
 
-# Replacing the default banner with hyfetch
-$env.config.show_banner = false
-hyfetch
+clear

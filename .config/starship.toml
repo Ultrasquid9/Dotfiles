@@ -16,7 +16,9 @@ $character
 """
 
 right_format = """\
+[◢](white)\
 $time\
+[◤](fg:white)\
 $c\
 $dart\
 $golang\
@@ -33,7 +35,7 @@ success_symbol = "╰─"
 error_symbol = "╰─"
 
 [os]
-format = '[$symbol](bold blue)'   
+format = '[$symbol](bold blue)'
 disabled = false
 
 [os.symbols]
@@ -58,10 +60,10 @@ style = 'fg:#d30000 bg:white'
 [time]
 disabled = false
 use_12hr= true
-format = "[🞄 $time 🞄 ]($style)"
+format = "[ $time ]($style)"
 time_format = "%R"
 utc_time_offset = "local"
-style = "dimmed white"
+style = "fg:#232634 bg:white"
 
 [custom.get-dir]
 command = "'~' + (pwd | split row (whoami)).1"
