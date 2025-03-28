@@ -61,12 +61,19 @@ style = 'fg:#d30000 bg:white'
 disabled = false
 use_12hr= true
 format = "[ $time ]($style)"
-time_format = "%R"
+time_format = "%r"
 utc_time_offset = "local"
 style = "fg:#232634 bg:white"
 
+# Gets the current directory
+# 
+# This uses a custom command instead of the built-in method, since the built-in one
+# truncates the directory too much and the configuration did not seem to work. 
 [custom.get-dir]
-command = "'~' + (pwd | split row (whoami)).1"
+command = """
+let lst = pwd | split row (whoami)
+if ($lst | length) > 1 {'~' + $lst.1} else {$lst.0}
+"""
 format = "[ $output ]($style)"
 shell = "nu"
 style = "fg:#232634 bg:purple"
