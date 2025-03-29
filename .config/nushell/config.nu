@@ -9,6 +9,9 @@ export-env {
 	# Used for FZF ctrl-t searching
 	$env.FZF_CTRL_T_COMMAND = "fd --type file --hidden"
 	$env.FZF_CTRL_T_OPTS = "--preview 'bat --color=always --style=full --line-range=:500 {}' "
+
+	# Fix core dump with Minecraft when exiting game
+	$env.__GL_THREADED_OPTIMIZATIONS = 0
 }
 
 $env.config = {
