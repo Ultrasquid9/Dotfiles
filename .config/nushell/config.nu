@@ -3,8 +3,9 @@ mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 export-env {
-	# Helix as default editor
-	$env.EDITOR = "helix"
+	# Nvim as default editor
+	# Maybe consider switching back to Helix once they have plugins 
+	$env.EDITOR = "nvim"
 
 	# Used for FZF ctrl-t searching
 	$env.FZF_CTRL_T_COMMAND = "fd --type file --hidden"
