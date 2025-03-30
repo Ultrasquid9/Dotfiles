@@ -1,11 +1,13 @@
+# The default editor
+# Maybe consider switching back to Helix once they have plugins 
+let editor = "nvim"
+
 # Starship prompt
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 export-env {
-	# Nvim as default editor
-	# Maybe consider switching back to Helix once they have plugins 
-	$env.EDITOR = "nvim"
+	$env.EDITOR = $editor
 
 	# Used for FZF ctrl-t searching
 	$env.FZF_CTRL_T_COMMAND = "fd --type file --hidden"
@@ -19,8 +21,8 @@ $env.config = {
 	# Disabling the default welcome banner
 	show_banner: false
 
-	# Setting Helix as the default editor
-	buffer_editor: "helix"
+	# Setting the default editor
+	buffer_editor: $editor
 
 	# FZF Bindings
 	keybindings: [
