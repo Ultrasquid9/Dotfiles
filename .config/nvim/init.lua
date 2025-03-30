@@ -22,7 +22,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Setup plugins
-require("lua.plugins") -- Contains all the plugins and their configurations
+require("plugins") -- Contains all the plugins and their configurations
 require("lazy").setup({
 	spec = plugins(),
 
@@ -37,6 +37,6 @@ require("lazy").setup({
 })
 
 -- Extra setup
-require("lua.options") -- Options
-require("lua.keymap") -- Keymap
+require("options") -- Options
+require("keymap") -- Keymap
 

@@ -1,13 +1,22 @@
 function plugins()
-	-- Themes
+	-- Appearance 
 	catppuccin = {
-		"catppuccin/nvim",
+		"catppuccin",
 		name = "catppuccin",
 		priority = 1000,
 
-		config = function() 
-			flavour = "frappe"
+		config = function()
+			require("catppuccin").setup({
+				flavour = "frappe"
+			})
 		end
+	}
+	which = {
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			preset = "modern"
+		}
 	}
 
 	-- Functionality
@@ -16,33 +25,47 @@ function plugins()
 		event = "InsertEnter",
 		config = true
 	}
-	indent_blankline = {
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {}
+	snacks = {
+		"folke/snacks.nvim",
+		opts = {
+			indent = { enabled = true },
+			input = { enabled = true }
+		}
 	}
-
-	-- Multiple files
 	telescope = {
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	}
 	tree = {
 		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("nvim-tree").setup {}
+			require("nvim-tree").setup({
+				view = {
+					float = {
+						enable = true
+					}
+				}
+			})
 		end
+	}
+
+	-- Because selection->action is objectively better
+	animotion = {
+		"luiscassih/AniMotion.nvim",
+		event = "VeryLazy",
+		config = true
 	}
 
 	return {
 		catppuccin,
+		which,
 
 		autopairs,
-		indent_blankline,
-
+		snacks,
 		telescope,
-		tree
+		tree,
+
+		animotion
 	}
 end
 
