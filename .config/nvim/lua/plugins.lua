@@ -25,6 +25,20 @@ function plugins()
 		event = "InsertEnter",
 		config = true
 	}
+	cmp = {
+		'saghen/blink.cmp',
+		version = "*",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		opts = {
+			keymap = { preset = "super-tab" },
+			completion = { documentation = { auto_show = true } },
+			fuzzy = { prebuilt_binaries = { download = true } },
+
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" }
+			}
+		}
+	}
 	snacks = {
 		"folke/snacks.nvim",
 		opts = {
@@ -49,6 +63,15 @@ function plugins()
 		end
 	}
 
+	-- Language support
+	treesitter = {
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate"
+	}
+	rustaceanvim = {
+		"mrcjkb/rustaceanvim"
+	}
+
 	-- Because selection->action is objectively better
 	animotion = {
 		"luiscassih/AniMotion.nvim",
@@ -61,9 +84,13 @@ function plugins()
 		which,
 
 		autopairs,
+		cmp,
 		snacks,
 		telescope,
 		tree,
+
+		treesitter,
+		rustaceanvim,
 
 		animotion
 	}
