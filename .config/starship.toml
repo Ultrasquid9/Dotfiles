@@ -4,21 +4,21 @@ add_newline = false
 format = """\
 [╭╴](bold white)\
 $os \
-[◢](blue)\
+[◢](#55cdfd)\
 $username\
-[◢](fg:purple bg:blue)\
+[◢](fg:#efa5b2 bg:#55cdfd)\
 ${custom.get-dir}\
-[◢](fg:white bg:purple)\
+[◢](fg:#ffffff bg:#efa5b2)\
 $git_branch\
 $git_status\
-[◤](fg:white)
+[◤](fg:#ffffff)
 $character
 """
 
 right_format = """\
-[◢](white)\
+[◢](#ffffff)\
 $time\
-[◤](fg:white)\
+[◤](fg:#ffffff)\
 $c\
 $dart\
 $golang\
@@ -44,18 +44,18 @@ Arch = '󰣇'
 [username]
 style_user = 'yellow bold'
 style_root = 'black bold'
-format = '[ $user ](fg:#232634 bg:blue)'
+format = '[ $user ](fg:#232634 bg:#55cdfd)'
 disabled = false
 show_always = true
 
 [git_branch]
 symbol = ""
 format = '[ $symbol $branch ]($style)'
-style = 'fg:#232634 bg:white'
+style = 'fg:#232634 bg:#ffffff'
 
 [git_status]
 format = '[$all_status$ahead_behind ]($style)'
-style = 'fg:#d30000 bg:white'
+style = 'fg:#d30000 bg:#ffffff'
 
 [time]
 disabled = false
@@ -63,7 +63,7 @@ use_12hr= true
 format = "[ $time ]($style)"
 time_format = "%r"
 utc_time_offset = "local"
-style = "fg:#232634 bg:white"
+style = "fg:#232634 bg:#ffffff"
 
 # Gets the current directory
 # 
@@ -76,5 +76,5 @@ if ($lst | length) > 1 {'~' + $lst.1} else {$lst.0}
 """
 format = "[ $output ]($style)"
 shell = "nu"
-style = "fg:#232634 bg:purple"
+style = "fg:#232634 bg:#efa5b2"
 when = "true"
