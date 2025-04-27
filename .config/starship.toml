@@ -4,21 +4,21 @@ add_newline = false
 format = """\
 [╭╴](bold white)\
 $os \
-[◢](#55cdfd)\
+[](#55cdfd)\
 $username\
-[◢](fg:#efa5b2 bg:#55cdfd)\
+[](fg:#efa5b2 bg:#55cdfd)\
 ${custom.get-dir}\
-[◢](fg:#ffffff bg:#efa5b2)\
+[](fg:#ffffff bg:#efa5b2)\
 $git_branch\
 $git_status\
-[◤](fg:#ffffff)
+[](fg:#ffffff)
 $character
 """
 
 right_format = """\
-[◢](#ffffff)\
+[](#ffffff)\
 $time\
-[◤](fg:#ffffff)\
+[](fg:#ffffff)\
 $c\
 $dart\
 $golang\
