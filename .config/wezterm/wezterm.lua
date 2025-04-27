@@ -2,13 +2,29 @@ local wezterm = require 'wezterm'
 local config = {}
 
 -- Nushell
-config.default_prog = { '/bin/nu' }
+local cmd = { '/bin/nu' }
+if wezterm.hostname() == 'fedora' then
+	-- If on Silverblue, enter Arch first 
+	cmd = { 'distrobox', 'enter', 'arch', '--', 'nu' }
+end
+config.default_prog = cmd
 
 -- Catppuccin
 config.color_scheme = 'Catppuccin Frappe'
 
 -- Font Size
 config.font_size = 10
+
+-- Window Close Confirmation
+config.window_close_confirmation = "NeverPrompt"
+wezterm.on(
+	'mux-is-process-stateful', 
+	function(proc)
+		-- Never prompt
+		-- Maybe make less bad in the future
+		return false
+	end
+)
 
 -- Tab Bar
 config.window_decorations = "RESIZE"
