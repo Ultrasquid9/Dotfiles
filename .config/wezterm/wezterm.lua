@@ -1,9 +1,13 @@
 local wezterm = require 'wezterm'
 local config = {}
 
+-- Checks if currently running on fedora
+-- Much of my workflow on Silverblue involves using Arch in Distrobox, so special handling is required 
+local is_fedora = wezterm.hostname() == 'fedora'
+
 -- Nushell
 local cmd = { '/bin/nu' }
-if wezterm.hostname() == 'fedora' then
+if is_fedora then
 	-- If on Silverblue, enter Arch first 
 	cmd = { 'distrobox', 'enter', 'arch', '--', 'nu' }
 end
@@ -17,14 +21,16 @@ config.font_size = 10
 
 -- Window Close Confirmation
 config.window_close_confirmation = "NeverPrompt"
-wezterm.on(
-	'mux-is-process-stateful', 
-	function(proc)
-		-- Never prompt
-		-- Maybe make less bad in the future
-		return false
-	end
-)
+if is_fedora then
+	wezterm.on(
+		'mux-is-process-stateful', 
+		function(proc)
+			-- Never prompt
+			-- Maybe make less bad in the future
+			return false
+		end
+	)
+end
 
 -- Tab Bar
 config.window_decorations = "RESIZE"
