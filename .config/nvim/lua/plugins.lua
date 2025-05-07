@@ -43,7 +43,7 @@ function plugins()
 		"folke/snacks.nvim",
 		opts = {
 			indent = { enabled = true },
-			input = { enabled = true }
+			input = { enabled = true },
 		}
 	}
 	telescope = {
@@ -55,11 +55,30 @@ function plugins()
 		config = function()
 			require("nvim-tree").setup({
 				view = {
-					float = {
+					float = { 
 						enable = true
 					}
 				}
 			})
+		end
+	}
+	gitsigns = {
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
+	minimap = {
+		"Isrothy/neominimap.nvim",
+		init = function()
+			vim.g.neominimap = {
+				auto_enable = true,
+				layout = "split",
+				split = {
+					minimap_width = 16,
+					close_if_last_window = true,
+				}
+			}
 		end
 	}
 
@@ -88,6 +107,8 @@ function plugins()
 		snacks,
 		telescope,
 		tree,
+		gitsigns,
+		minimap,
 
 		treesitter,
 		rustaceanvim,
