@@ -36,7 +36,7 @@ $env.config = {
 				cmd: "
 				let fzf_ctrl_t_command = \$\"($env.FZF_CTRL_T_COMMAND) | fzf ($env.FZF_CTRL_T_OPTS)\";
 				let result = nu -l -i -n -c $fzf_ctrl_t_command;
-				commandline edit --append $result;
+				commandline edit --append $"'($result)'";
 				commandline set-cursor --end
 				"
 			}
@@ -62,6 +62,24 @@ $env.config = {
 			}
 		}
 	]
+}
+
+# Recursive ls, returning a list instead of a table
+def lsd [
+	--regex (-r) # Use regex to filter the output 
+	filter?: string # A filter to be applied to the output
+]: nothing -> list<string> {
+	mut out = fd | parse "{name}" | $in.name
+
+	if ($filter | is-empty) == false {
+		$out | if $regex { 
+			find -r $filter 
+		} else {
+			find $filter 
+		}
+	} else {
+		$out
+	}
 }
 
 # Shortcut to commit all changed dotfiles
